@@ -16,8 +16,6 @@ const pool = mysql2.createPool({
   user: dbUser,
   password: dbPassword,
   database: dbName,
-  waitForConnections: true,
-  connectionLimit: process.env.DB_CONN_LIMIT ? Number(process.env.DB_CONN_LIMIT) : 10,
   port: dbPort,
 });
 
