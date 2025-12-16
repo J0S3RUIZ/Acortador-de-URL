@@ -17,7 +17,7 @@ function URLForm({ onClose, onAddUrl }) {
         e.preventDefault();
 
         try {
-                const base = process.env.API_URL || "http://localhost:3000";
+                const base = import.meta.env.VITE_API_URL || "http://localhost:3000";
                 const res = await fetch(`${base}/api/url`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },

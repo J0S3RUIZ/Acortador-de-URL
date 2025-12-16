@@ -6,12 +6,10 @@ import ErrorModal from "./ErrorModal";
 function URLSection({ reloadFlag }) {
     const [urls, setUrls] = useState([]);
     const [errorMessage, setErrorMessage] = useState("");
-    const [loading, setLoading] = useState(true);
 
     const fetchUrls = async () => {
         try {
-            setLoading(true);
-            const base = process.env.API_URL || "http://localhost:3000";
+            const base = import.meta.env.VITE_API_URL || "http://localhost:3000";
             const res = await fetch(`${base}/api/url`, {
                 method: "GET",
                 credentials: "include",
@@ -25,8 +23,6 @@ function URLSection({ reloadFlag }) {
         } catch (err) {
             setErrorMessage(err.message);
             console.error("Error fetching URLs:", err.message);
-        } finally {
-            setLoading(false);
         }
     };
 

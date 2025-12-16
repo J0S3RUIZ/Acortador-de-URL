@@ -1,4 +1,3 @@
-import { useState } from "react";
 import fondoRegister from "../assets/fondoRegister.jpg";
 import LoginForm from "../components/LoginForm";
 import { InteractiveBackground } from "../components/FondoInteractivo";

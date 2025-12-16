@@ -8,13 +8,12 @@ import LandingPage from "../components/LandingPage";
 function Home() {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [errorMessage, setErrorMessage] = useState("");
     const [showURLForm, setShowURLForm] = useState(false);
     const [reloadFlag, setReloadFlag] = useState(0);
 
     const fetchUser = async () => {
         try {
-            const base = process.env.API_URL || "http://localhost:3000";
+            const base = import.meta.env.VITE_API_URL || "http://localhost:3000";
             const res = await fetch(`${base}/auth/getMe`, {
                 method: "GET",
                 credentials: "include",
@@ -26,7 +25,6 @@ function Home() {
             const userData = await res.json();
             setUser(userData);
         } catch (err) {
-            setErrorMessage(err.message);
             console.error("Error fetching user:", err.message);
         } finally {
             setLoading(false);
@@ -72,7 +70,7 @@ function Home() {
                         onClose={() => {
                             setShowURLForm(false);
                         }}
-                        onAddUrl={(newUrl) => {
+                        onAddUrl={() => {
                             setReloadFlag((p) => p + 1);
                             setShowURLForm(false);
                         }}

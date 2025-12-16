@@ -6,7 +6,9 @@ export default function ErrorModal({ message, duration = 2000, onDone }) {
 
   useEffect(() => {
     if (!message) return;
-    setWidth(0);
+
+    // Reset width using a microtask to avoid synchronous setState in effect
+    Promise.resolve().then(() => setWidth(0));
 
     let start = performance.now();
     let frame = () => {
@@ -15,6 +17,7 @@ export default function ErrorModal({ message, duration = 2000, onDone }) {
       setWidth(pct * 100);
       if (pct < 1) requestAnimationFrame(frame);
     };
+    
     requestAnimationFrame(frame);
 
     const t = setTimeout(onDone, duration);

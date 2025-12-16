@@ -16,7 +16,7 @@ export async function parseApiError(response) {
     if (data.message) return data.message;
 
     return response.statusText || "Error desconocido";
-  } catch (err) {
+  } catch {
     return response.statusText || "Error desconocido";
   }
 }

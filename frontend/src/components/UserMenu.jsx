@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
 import {LogOut } from "lucide-react"
 
-export default function UserMenu({ onLogout, onDeleteAll, onDeleteAccount, open, onClose }) {
+export default function UserMenu({ onLogout, onDeleteAll, open, onClose }) {
   const menuRef = useRef(null);
 
   useEffect(() => {

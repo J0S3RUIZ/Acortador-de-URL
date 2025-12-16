@@ -16,7 +16,7 @@ export default function LandingPage() {
 
     const fetchStats = async () => {
         try {
-            const base = process.env.API_URL || "http://localhost:3000";
+            const base = import.meta.env.VITE_API_URL || "http://localhost:3000";
             const res = await fetch(`${base}/api/stats`);
             if (!res.ok) {
                 const { error } = await res.json();
