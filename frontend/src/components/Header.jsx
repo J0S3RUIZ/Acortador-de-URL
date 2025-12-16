@@ -8,7 +8,7 @@ function Header({ user }) {
   const logout = () => {
     // Redirige inmediatamente al landing y hace logout en background
     navigate("/");
-    const base = import.meta.env.VITE_API_URL || "http://localhost:3000";
+    const base = process.env.API_URL || "http://localhost:3000";
     fetch(`${base}/auth/logout`, {
       method: "POST",
       credentials: "include",

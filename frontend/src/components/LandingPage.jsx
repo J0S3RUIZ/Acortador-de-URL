@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 import FeatureCard from "./FeatureCard";
 import { InteractiveBackground } from "./FondoInteractivo";
 import { useState, useEffect } from "react";
-import { se } from "date-fns/locale";
 
 export default function LandingPage() {
 
@@ -17,7 +16,7 @@ export default function LandingPage() {
 
     const fetchStats = async () => {
         try {
-            const base = import.meta.env.VITE_API_URL || "http://localhost:3000";
+            const base = process.env.API_URL || "http://localhost:3000";
             const res = await fetch(`${base}/api/stats`);
             if (!res.ok) {
                 const { error } = await res.json();

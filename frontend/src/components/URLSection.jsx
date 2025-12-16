@@ -11,7 +11,7 @@ function URLSection({ reloadFlag }) {
     const fetchUrls = async () => {
         try {
             setLoading(true);
-            const base = import.meta.env.VITE_API_URL || "http://localhost:3000";
+            const base = process.env.API_URL || "http://localhost:3000";
             const res = await fetch(`${base}/api/url`, {
                 method: "GET",
                 credentials: "include",
